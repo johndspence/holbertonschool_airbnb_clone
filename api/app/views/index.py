@@ -1,19 +1,24 @@
-from flask import Flask, jsonify, request
+
+from datetime import datetime
+from flask import Flask, request
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 
 from app import app
-
+from peewee import *
 
 @app.route('/', methods=['GET'])
 @as_json
 def index():
-	'''return flask.jsonify(app)'''
-	return { 'TEST' : 12 }
 
-'''
-def before_request()
+	utc = datetime.utcnow()
+	now = datetime.now()
+	return json_response(time=utc,now=now)
 
-def after_request()
+def before_request():
+	database.connect()
 
-def not_found()
-'''
+def after_request():
+	database.close()
+
+def not_found():
+	return json_response(code=404,msg='not found')
