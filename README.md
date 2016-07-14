@@ -12,5 +12,5 @@ NodeJS
 FileSystem
 OAuth2
 MySQL
-NoSQL
+NoSQL.
 Currently in development.
