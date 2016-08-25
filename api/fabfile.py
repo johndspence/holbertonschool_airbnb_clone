@@ -33,7 +33,7 @@ def deploy_john():
 	'''Unpack the tarfile and copy into the site's root on the webserver.'''
 	put('airbnb_clone/%s.tar.gz' % dist, '/tmp/%s.tar.gz' % dist)
 	run('sudo mkdir /tmp/%s' % dist)
-	run('sudo tar -xzf /tmp/%s.tar.gz -C /var/www/html' % dist)
+	run('sudo tar -xzf /tmp/%s.tar.gz -C /usr/share/nginx/html' % dist)
 	run('sudo rm -rf /tmp/%s /tmp/%s.tar.gz' % (dist, dist))
 	local('rm -rf mywebapp.tar.gz airbnb_clone')
 
